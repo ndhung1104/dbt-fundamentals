@@ -2,7 +2,7 @@ with stg_payments as (
     select
         orderid,
         amount
-    from raw.stripe.payment
+    from {{ source('stripe', 'payment') }}
     where status = 'success'
 )
 
